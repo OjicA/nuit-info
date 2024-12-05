@@ -1,4 +1,5 @@
 import Aura from '@primevue/themes/aura'
+import 'primeicons/primeicons.css'
 
 export default {
   theme: {
@@ -7,5 +8,5 @@ export default {
       darkModeSelector: 'system'
     }
   },
-  unstyled: true
+  unstyled: false
 }
