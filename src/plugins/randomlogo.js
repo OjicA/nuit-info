@@ -30,5 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Appliquer les positions aléatoires
         logo.style.left = `${randomX}px`;
         logo.style.top = `${randomY}px`;
+        logo.style.zIndex = -1
     };
 });
