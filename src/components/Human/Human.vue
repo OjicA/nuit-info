@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import Organ from '@/components/Human/Organ.vue'
+import { reactive, ref } from 'vue'
 import Button from 'primevue/button'
 
-type refImage = {
-  [key: string]: {
-    showed: boolean;
-    url: string;
-  }
+type OrganType = { showed: boolean; url: string; }
+type RefImage = {
+  [key: string]: OrganType
 }
 
-const imagesShowed = ref<refImage>({
+const imagesShowed = reactive<RefImage>({
   heart: {
     showed: true,
     url: '/assets/images/heart.png'
@@ -28,18 +27,15 @@ const imagesShowed = ref<refImage>({
   }
 })
 const bodyShowed = ref(true)
-const organSelected = ref<{
-  showed: boolean;
-  url: string;
-} | null>(null)
+const organSelected = ref<OrganType>()
 
 const clickOnOrgan = (organ: 'heart' | 'brain' | 'lung' | 'stomac') => {
-  Object.keys(imagesShowed.value).forEach((key: string) => {
+  Object.entries(imagesShowed).forEach(([key, value]) => {
     if (key !== organ) {
-      imagesShowed.value[key].showed = false
+      value.showed = false
     } else {
-      imagesShowed.value[key].showed = true
-      organSelected.value = imagesShowed.value[key]
+      value.showed = true
+      organSelected.value = value
     }
   })
   zoom.value = true
@@ -52,19 +48,20 @@ const zoom = ref(false)
 </script>
 
 <template>
-  <!-- <Button v-if="!bodyShowed" class="static m-3" @click="bodyShowed = true; zoom = false;">Retour</Button> -->
-  <main :class="'w-screen h-screen flex justify-center items-center bg-teal-50' + (zoom ? ' overflow-hidden' : '')">
-    <div :class="(zoom ? 'overflow-hidden zoom-in ' : '') + 'human-body z-10'" v-if="bodyShowed">
-      <img src="/assets/images/heart.png" alt="Heart" :class="`relative origin-center w-10 hover:scale-150 heart`" @click="clickOnOrgan('heart')" />
-      <img src="/assets/images/brain.png" alt="Brain" :class="`relative origin-center w-14 hover:scale-150 brain`" @click="clickOnOrgan('brain')" />
-      <img src="/assets/images/lung.png" alt="Lung" :class="`relative origin-center w-14 hover:scale-150 lung`" @click="clickOnOrgan('lung')" />
-      <img src="/assets/images/stomac.png" alt="Stomac" :class="`relative origin-center w-14 hover:scale-150 stomac`" @click="clickOnOrgan('stomac')" />
+  <Button v-if="!bodyShowed" class="static m-3" @click="bodyShowed = true; zoom = false;">Retour</Button>
+  <main :class="['w-screen', 'h-screen', 'flex', 'justify-center', 'items-center', 'bg-teal-50', (zoom ? 'overflow-hidden' : '')]">
+    <div v-if="bodyShowed" :class="[...(zoom ? ['overflow-hidden', 'zoom-in'] : []), 'human-body', 'z-10']">
+      <Organ name="brain" top="21" left="47.9" @click="clickOnOrgan('brain')" />
+      <Organ name="heart" top="34" left="50" @click="clickOnOrgan('heart')" />
+      <Organ name="lung" top="37" left="47" @click="clickOnOrgan('lung')" />
+      <Organ name="stomac" top="46" left="48" @click="clickOnOrgan('stomac')" />
     </div>
+
     <div v-if="!bodyShowed" class="w-full h-full flex justify-between items-center px-12 text-black appear">
       <div class="flex flex-col border-4 w-full mr-48 rounded-md h-1/3">
         <div class="border-b-4">Corps humain</div>
         <div class="flex-1">
-          Le cors humain blablabla
+          Le corps humain blablabla
         </div>
       </div>
       <div class="w-1/6">
@@ -73,7 +70,7 @@ const zoom = ref(false)
       <div class="flex flex-col border-4 w-full ml-48 rounded-md h-1/3">
         <div class="border-b-4">Corps humain</div>
         <div class="flex-1">
-          Le cors humain blablabla
+          Le corps humain blablabla
         </div>
       </div>
     </div>
@@ -95,26 +92,6 @@ const zoom = ref(false)
   img {
     transition: all 0.5s;
     cursor: pointer;
-
-    &.heart {
-      top: 20%;
-      right: -55%;
-    }
-
-    &.brain {
-      top: -7.5%;
-      right: -37.5%;
-    }
-
-    &.lung {
-      top: 5%;
-      left: 37.5%;
-    }
-
-    &.stomac {
-      top: 11%;
-      right: -38.5%;
-    }
   }
 }
 
