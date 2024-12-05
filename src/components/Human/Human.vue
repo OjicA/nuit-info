@@ -37,7 +37,6 @@ const clickOnOrgan = (organ: 'heart' | 'brain' | 'lung' | 'stomac') => {
       organSelected.value = value
     }
   })
-  // zoom.value = true
   router.push({ name: 'organ', params: { organ } })
 }
 
@@ -45,7 +44,6 @@ const zoom = ref(false)
 </script>
 
 <template>
-  <!--  <Button v-if="!bodyShowed" class="static m-3" @click="">Retour</Button>-->
   <main :class="['w-screen', 'h-screen', 'flex', 'justify-center', 'items-center', 'bg-teal-50', (zoom ? 'overflow-hidden' : '')]">
     <div :class="[...(zoom ? ['overflow-hidden', 'zoom-in'] : []), 'human-body', 'z-10']">
       <Organ name="brain" top="21" left="47.9" @click="clickOnOrgan('brain')" />
@@ -53,24 +51,6 @@ const zoom = ref(false)
       <Organ name="lung" top="37" left="47" @click="clickOnOrgan('lung')" />
       <Organ name="stomac" top="46" left="48" @click="clickOnOrgan('stomac')" />
     </div>
-
-    <!--    <div v-if="!bodyShowed" class="w-full h-full flex justify-between items-center px-12 text-black appear">-->
-    <!--      <div class="flex flex-col border-4 w-full mr-48 rounded-md h-1/3">-->
-    <!--        <div class="border-b-4">Corps humain</div>-->
-    <!--        <div class="flex-1">-->
-    <!--          Le corps humain blablabla-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--      <div class="w-1/6">-->
-    <!--        <img :src="organSelected?.url" alt="Organ" class="pulser w-full" />-->
-    <!--      </div>-->
-    <!--      <div class="flex flex-col border-4 w-full ml-48 rounded-md h-1/3">-->
-    <!--        <div class="border-b-4">Corps humain</div>-->
-    <!--        <div class="flex-1">-->
-    <!--          Le corps humain blablabla-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </main>
 </template>
 
