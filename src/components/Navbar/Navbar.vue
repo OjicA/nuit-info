@@ -5,7 +5,7 @@ import { ref } from 'vue'
 import { PrimeIcons } from '@primevue/core/api'
 
 const items = ref<MenuItem[]>([
-  { label: 'Page principale', icon: PrimeIcons.HOME, route: { name: 'home' } },
+  { label: 'Page principale', icon: PrimeIcons.HOME, route: { name: 'human' } },
   { label: 'Button 2' },
   { label: 'Button 3' },
 ])

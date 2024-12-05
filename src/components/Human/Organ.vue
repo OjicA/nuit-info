@@ -14,7 +14,7 @@ defineEmits<{
   <img :src="`/assets/images/${name}.png`"
        :alt="name"
        class="absolute origin-center w-16 hover:scale-150"
-       :style="{ top: `${top}%`, left: `${left}%` }"
+       :style="{ top: `${top}vh`, left: `${left}vw` }"
        @click="$emit('click', name)" />
 </template>
 
