@@ -1,15 +1,29 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
 
 const routes = [
-  { name: 'home', path: '/', component: () => import('../components/HelloWorld.vue') },
   {
-    path: "/captcha",
-    name: "Captcha",
-    component: () => import('../components/captcha.vue'),
+    name: 'human',
+    path: '/',
+    component: () => import('@/components/Human/Human.vue')
   },
+  {
+    name: 'input',
+    path: '/input',
+    component: () => import('@/components/FormRelou.vue')
+  },
+  {
+    name: 'Captcha',
+    path: '/captcha',
+    component: () => import('@/components/captcha.vue')
+  },
+  {
+    name: 'organ',
+    path: '/:organ',
+    component: () => import('@/components/Human/OrganDetail.vue')
+  }
 ]
 
 export default createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes
 })
