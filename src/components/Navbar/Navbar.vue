@@ -7,7 +7,7 @@ import { PrimeIcons } from '@primevue/core/api'
 const items = ref<MenuItem[]>([
   { label: 'Page principale', icon: PrimeIcons.HOME, route: { name: 'human' } },
   { label: 'Bonne chance', route: { name: 'input' } },
-  { label: 'Button 3' },
+  { label: 'Captcha', route: { name: 'captcha' } },
 ])
 </script>
 

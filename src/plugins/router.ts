@@ -12,9 +12,10 @@ const routes = [
     component: () => import('@/components/FormRelou.vue')
   },
   {
-    name: 'Captcha',
+    name: 'captcha',
     path: '/captcha',
-    component: () => import('@/components/captcha.vue')
+    // @ts-expect-error
+    component: () => import('@/components/Captcha.vue')
   },
   {
     name: 'organ',
