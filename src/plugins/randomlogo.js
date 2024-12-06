@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     logo.alt = 'Logo';
     logo.id = 'logo'; // Donnez un ID si nécessaire pour le style
     logo.style.position = 'absolute'; // Position absolute pour un placement flexible
+    logo.style.zIndex = '9999';
     //logo.style.transform = 'rotateY(180deg)';
 
     // Ajoutez le logo au body
@@ -82,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
         whiteBackground.style.border = '2px solid #98C520';
         whiteBackground.style.opacity = '0';  // Initialement transparent
         whiteBackground.style.transition = 'opacity 1s'; // Transition de fondu
-        
+        whiteBackground.style.zIndex = '9998';
+
         elements.push(whiteBackground);
         document.body.appendChild(whiteBackground);
 
@@ -93,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         closeButton.style.left = `${centerX + 360}px`;
         closeButton.style.top = `${centerY + 25}px`;
         closeButton.style.cursor = 'pointer';
+        closeButton.style.zIndex = '9998';
         closeButton.addEventListener('click', function(){
             elements.forEach(el => el.remove());
         });
@@ -112,7 +115,8 @@ document.addEventListener("DOMContentLoaded", function() {
         letters.style.left = `${centerX - 175}px`;
         letters.style.top = `${centerY + 230}px`;
         letters.style.transform = 'translateY(-50%)';
-    
+        letters.style.zIndex = '9998';
+
         const words = ["yreco est une entreprise formidable, franchement bravo !", "aourt. enfaite là, j'avais plus d'idée, désolé...", "are sont les bonnes idées actuellement.", "st-ce que c'est bon pour vous ?", "alembour", "ui, il faut absolument qu'on gagne et vous le savez très bien !"];
     
         // Ajoutez chaque lettre et son texte associé
@@ -120,19 +124,22 @@ document.addEventListener("DOMContentLoaded", function() {
             const wrapper = document.createElement('div');
             wrapper.style.display = 'flex';
             wrapper.style.alignItems = 'center';
+            wrapper.style.zIndex = '9998';
     
             const p = document.createElement('p');
             p.textContent = letter;
             p.style.margin = '0';
             p.style.opacity = '0'; // Initialement transparent
             p.style.transition = 'opacity 0.5s'; // Transition de fondu
-    
+            p.style.zIndex = '9998';
+
             const textSpan = document.createElement('span');
             textSpan.style.marginTop = '12px';
             textSpan.style.opacity = '0';
             textSpan.style.transition = 'opacity 0.1s';
             textSpan.style.fontSize = '20px'; // Taille de la police plus petite
             textSpan.style.fontWeight = 'normal'; // Texte normal, pas gras
+            textSpan.style.zIndex = '9998';
             
             elements.push(p,textSpan,wrapper);
             wrapper.appendChild(p);
@@ -146,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         // Assurez-vous que le logo est devant
         logo.style.position = 'absolute';
-        logo.style.zIndex = '1';
+        logo.style.zIndex = '9999';
     
         function animate(currentTime) {
             const elapsedTime = currentTime - startTime;
