@@ -12,6 +12,11 @@ const routes = [
     component: () => import('@/components/FormRelou.vue')
   },
   {
+    name: 'Captcha',
+    path: '/captcha',
+    component: () => import('@/components/captcha.vue')
+  },
+  {
     name: 'organ',
     path: '/:organ',
     component: () => import('@/components/Human/OrganDetail.vue')
